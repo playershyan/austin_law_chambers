@@ -1,86 +1,48 @@
+'use client'
+
+import { getStructuredData, FIRM_INFO } from '@/lib/firm-constants'
+
 export function LocalBusinessSchema() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lhttlaw.com'
+
   const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'LegalService',
-    name: 'Leonard, Hammond, Thoma & Terrill',
-    description:
-      'Experienced attorneys in Fort Wayne, Indiana specializing in Family Law, Personal Injury, and Criminal Defense.',
-    url: 'https://lhttlaw.com',
-    logo: 'https://lhttlaw.com/logo.png',
-    image: 'https://lhttlaw.com/office.jpg',
-    telephone: '+1-260-555-0100',
-    email: 'contact@lhttlaw.com',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: '123 Main Street',
-      addressLocality: 'Fort Wayne',
-      addressRegion: 'IN',
-      postalCode: '46802',
-      addressCountry: 'US',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: '41.0793',
-      longitude: '-85.1394',
-    },
+    ...getStructuredData(),
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    image: `${siteUrl}/office.jpg`,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Saturday'],
+        opens: '08:00',
         closes: '17:00',
       },
     ],
-    priceRange: '$$',
     areaServed: [
       {
         '@type': 'City',
-        name: 'Fort Wayne',
+        name: FIRM_INFO.address.city,
       },
       {
-        '@type': 'State',
-        name: 'Indiana',
+        '@type': 'Country',
+        name: FIRM_INFO.address.country,
       },
     ],
     sameAs: [
-      'https://www.facebook.com/yourfirm',
-      'https://www.linkedin.com/company/yourfirm',
-      'https://twitter.com/yourfirm',
+      'https://www.facebook.com/austinlawchambers',
+      'https://www.linkedin.com/company/austin-law-chambers',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-    },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Legal Services',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Family Law & Divorce',
-            description: 'Divorce, child custody, spousal support, and family law matters',
-          },
+      itemListElement: FIRM_INFO.practiceAreas.map((area) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: area.name,
+          description: area.description,
         },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Personal Injury',
-            description: 'Car accidents, workplace injuries, and personal injury claims',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Criminal Defense',
-            description: 'DUI/OWI defense, misdemeanors, felonies, and criminal law',
-          },
-        },
-      ],
+      })),
     },
   }
 

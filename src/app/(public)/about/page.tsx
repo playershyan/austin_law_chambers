@@ -1,40 +1,28 @@
 import { Section, SectionTitle, CTASection } from '@/components/ui'
-import { Scale, Users, Award, Heart, Shield } from 'lucide-react'
+import { Scale, Users, Award, Lightbulb, Target } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export const metadata = {
-  title: 'About Us | Law Firm Name - Fort Wayne Attorneys',
+  title: 'About Austin Law Chambers | Leading Law Firm in Colombo',
   description:
-    'Learn about our Fort Wayne law firm. Experienced attorneys dedicated to family law, personal injury, and criminal defense with compassionate, client-focused representation.',
+    'Learn about Austin Law Chambers, a leading law firm in Colombo, Sri Lanka. Experienced attorneys dedicated to corporate law, commercial litigation, and property law with strategic counsel and client-focused representation.',
 }
 
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Scale,
-      title: 'Integrity',
-      description: 'We uphold the highest ethical standards in every case we handle',
-    },
-    {
-      icon: Users,
-      title: 'Client-Focused',
-      description: 'Your needs and goals drive everything we do',
-    },
-    {
-      icon: Award,
-      title: 'Excellence',
-      description: 'We pursue the best possible outcomes through diligent preparation',
-    },
-    {
-      icon: Heart,
-      title: 'Compassion',
-      description: 'We understand the human side of legal challenges',
-    },
-    {
-      icon: Shield,
-      title: 'Protection',
-      description: 'We are fierce advocates for your rights and interests',
-    },
-  ]
+  // Map FIRM_INFO values to components with icons
+  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    Excellence: Award,
+    Integrity: Scale,
+    'Client Focus': Users,
+    'Strategic Thinking': Lightbulb,
+    'Results-Driven': Target,
+  }
+
+  const values = FIRM_INFO.values.map((value) => ({
+    icon: iconMap[value.name as keyof typeof iconMap] || Award,
+    title: value.name,
+    description: value.description,
+  }))
 
   return (
     <>
@@ -42,8 +30,8 @@ export default function AboutPage() {
       <section className="bg-primary text-white py-16">
         <div className="container mx-auto px-4">
           <nav className="text-sm mb-4 text-white/70">Home &gt; About</nav>
-          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">About Our Firm</h1>
-          <p className="text-xl text-white/90">Your trusted legal advocates in Fort Wayne</p>
+          <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">About Austin Law Chambers</h1>
+          <p className="text-xl text-white/90">Trusted Legal Partners in Colombo</p>
         </div>
       </section>
 
@@ -53,30 +41,22 @@ export default function AboutPage() {
           <SectionTitle>Who We Are</SectionTitle>
           <div className="prose prose-lg max-w-none text-text-light">
             <p className="mb-6">
-              At Law Firm Name, we are dedicated to providing exceptional legal representation
-              across family law, personal injury, and criminal defense. Based in Fort Wayne,
-              Indiana, our experienced attorneys combine aggressive advocacy with compassionate
-              client service to achieve the best possible outcomes for those we serve.
+              {FIRM_INFO.description.long}
             </p>
             <p className="mb-6">
-              We understand that legal challenges are often the most stressful times in our clients'
-              lives. Whether you're navigating a divorce, recovering from an injury, or facing
-              criminal charges, our team is here to guide you with expertise, empathy, and
-              unwavering dedication.
+              We serve a diverse clientele ranging from individuals seeking property law guidance to businesses requiring corporate legal services and litigation representation. Our reputation is built on delivering effective outcomes through strategic legal thinking and client-focused service.
             </p>
             <div className="grid md:grid-cols-2 gap-8 mt-12">
               <div className="bg-background-gray p-6 rounded-lg">
                 <h3 className="text-2xl font-heading font-bold text-primary mb-3">Our Mission</h3>
                 <p className="text-text-light">
-                  To protect our clients' rights and interests through skilled legal representation,
-                  personalized attention, and a commitment to achieving justice.
+                  To provide exceptional legal services with a client-first philosophy, delivering clear communication, strategic counsel, and robust representation across all our practice areas.
                 </p>
               </div>
               <div className="bg-background-gray p-6 rounded-lg">
                 <h3 className="text-2xl font-heading font-bold text-primary mb-3">Our Vision</h3>
                 <p className="text-text-light">
-                  To be Fort Wayne's most trusted law firm, known for exceptional results, client
-                  satisfaction, and positive impact in our community.
+                  To be Colombo's most trusted law firm, known for exceptional results, client satisfaction, and positive impact in the Sri Lankan legal community.
                 </p>
               </div>
             </div>
@@ -103,37 +83,36 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {/* History */}
+      {/* Why Choose Us */}
       <Section>
         <div className="max-w-4xl mx-auto">
-          <SectionTitle>Our Story</SectionTitle>
-          <div className="prose prose-lg max-w-none text-text-light">
-            <p className="mb-6">
-              Founded with a vision to provide accessible, high-quality legal services to the Fort
-              Wayne community, our firm has grown through dedication to our clients and commitment
-              to excellence. Over the years, we've helped hundreds of families navigate complex
-              legal challenges and achieve favorable outcomes.
-            </p>
-            <p className="mb-6">
-              Our attorneys bring more than 50 years of combined experience to every case. We've
-              built our reputation on integrity, thorough preparation, and aggressive advocacy. From
-              our first case to our most recent victory, our focus remains the same: protecting our
-              clients' rights and securing their futures.
-            </p>
+          <SectionTitle>Why Choose Austin Law Chambers</SectionTitle>
+          <div className="grid md:grid-cols-2 gap-8">
+            {FIRM_INFO.whyChooseUs.map((reason) => (
+              <div key={reason.title} className="bg-background-gray p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">{reason.title}</h3>
+                <p className="text-sm text-text-light">{reason.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
 
-      {/* Community Involvement */}
+      {/* Practice Area Focus */}
       <Section variant="gray">
         <div className="max-w-4xl mx-auto">
-          <SectionTitle>Community Commitment</SectionTitle>
-          <div className="prose prose-lg max-w-none text-text-light text-center">
-            <p className="mb-6">
-              We believe in giving back to the Fort Wayne community that has supported us. Our
-              attorneys regularly participate in pro bono legal services, local bar association
-              activities, and community education programs. We're proud to serve not just as legal
-              advocates, but as active members of the Fort Wayne community.
+          <SectionTitle>Our Practice Areas</SectionTitle>
+          <div className="grid md:grid-cols-3 gap-8">
+            {FIRM_INFO.practiceAreas.map((area) => (
+              <div key={area.slug} className="bg-white p-6 rounded-lg">
+                <h3 className="text-xl font-semibold text-primary mb-2">{area.name}</h3>
+                <p className="text-sm text-text-light">{area.shortDescription}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 p-6 bg-white rounded-lg">
+            <p className="text-text-light text-center">
+              Austin Law Chambers specializes in three core practice areas: Corporate Law for guiding businesses through formation, compliance, contracts, and transactions; Commercial Litigation for robust representation in business disputes and court proceedings; and Property Law for expert conveyancing and property transaction services.
             </p>
           </div>
         </div>

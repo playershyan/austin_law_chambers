@@ -2,11 +2,11 @@ import { Section, SectionTitle } from '@/components/ui'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { LazyGoogleMap } from '@/components/maps'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export const metadata = {
-  title: 'Contact Us | Law Firm Name - Fort Wayne Attorneys',
-  description:
-    'Contact our Fort Wayne law firm for a free consultation. Call (260) 555-0100 or visit our office at 123 Main Street. Available 24/7 for emergencies.',
+  title: `Contact Us | ${FIRM_INFO.name} - Colombo Attorneys`,
+  description: `Contact ${FIRM_INFO.name} in Colombo for a free consultation. Call ${FIRM_INFO.contact.phoneDisplay} or visit our office at ${FIRM_INFO.address.full}. Available ${FIRM_INFO.hours.full}`,
 }
 
 export default function ContactPage() {
@@ -14,22 +14,22 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: 'Office Location',
-      details: ['123 Main Street', 'Fort Wayne, IN 46802'],
+      details: [FIRM_INFO.address.street, `${FIRM_INFO.address.city} ${FIRM_INFO.address.postalCode}, ${FIRM_INFO.address.country}`],
     },
     {
       icon: Phone,
       title: 'Phone',
-      details: ['(260) 555-0100', 'Available 24/7 for emergencies'],
+      details: [FIRM_INFO.contact.phoneDisplay, 'Call us during business hours'],
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['contact@lawfirm.com', 'We respond within 24 hours'],
+      details: [FIRM_INFO.contact.email, 'We respond within 24 hours'],
     },
     {
       icon: Clock,
       title: 'Office Hours',
-      details: ['Monday - Friday: 9:00 AM - 5:00 PM', 'Saturday - Sunday: By appointment'],
+      details: [FIRM_INFO.hours.weekdays, FIRM_INFO.hours.weekend],
     },
   ]
 
@@ -75,7 +75,7 @@ export default function ContactPage() {
             <h2 className="text-3xl font-heading font-bold text-primary mb-6">Send Us a Message</h2>
             <p className="text-text-light mb-6">
               Fill out the form below and we'll get back to you within 24 hours. For immediate
-              assistance, please call us at (260) 555-0100.
+              assistance, please call us at {FIRM_INFO.contact.phoneDisplay}.
             </p>
             <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-200">
               <ContactForm />
@@ -88,11 +88,11 @@ export default function ContactPage() {
             <div className="rounded-lg overflow-hidden">
               {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? (
                 <LazyGoogleMap
-                  center={{ lat: 41.07915, lng: -85.139758 }}
-                  zoom={19}
+                  center={{ lat: 6.9271, lng: 80.7789 }}
+                  zoom={16}
                   mapId={process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID}
                   height="400px"
-                  markerTitle="Leonard, Hammond, Thoma & Terrill - Law Office"
+                  markerTitle={`${FIRM_INFO.name} - Law Office`}
                 />
               ) : (
                 <div className="w-full h-[400px] flex items-center justify-center text-text-light">
@@ -110,7 +110,7 @@ export default function ContactPage() {
             {/* Get Directions Link */}
             <div className="mt-4">
               <a
-                href="https://www.google.com/maps?ll=41.07915,-85.139758&z=19.778207555915408&t=m&hl=en-US&gl=US&mapclient=apiv3&cid=8341129817241693912"
+                href="https://www.google.com/maps?q=Austin+Law+Chambers,+Colombo,+Sri+Lanka"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
@@ -129,12 +129,12 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <p className="text-text-light">Years Combined Experience</p>
+              <div className="text-4xl font-bold text-primary mb-2">4</div>
+              <p className="text-text-light">Practice Areas</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-              <p className="text-text-light">Emergency Availability</p>
+              <div className="text-4xl font-bold text-primary mb-2">5</div>
+              <p className="text-text-light">Star Rated</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-primary mb-2">100%</div>
@@ -143,14 +143,14 @@ export default function ContactPage() {
           </div>
           <div className="mt-12 text-center">
             <p className="text-lg text-text-light mb-6">
-              Don't face legal challenges alone. Our experienced attorneys are ready to fight for
-              your rights and protect your future.
+              Don't face legal challenges alone. Our experienced attorneys in Colombo are ready to fight for
+              your rights and protect your future. Contact us today for your free consultation.
             </p>
             <a
-              href="tel:2605550100"
+              href={`tel:${FIRM_INFO.contact.phone.replace(/\D/g, '')}`}
               className="inline-block bg-primary text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-primary-dark transition-colors"
             >
-              Call Now: (260) 555-0100
+              Call Now: {FIRM_INFO.contact.phoneDisplay}
             </a>
           </div>
         </div>

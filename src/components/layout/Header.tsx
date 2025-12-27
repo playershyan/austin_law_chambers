@@ -4,13 +4,21 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import { Button } from '@/components/ui'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Practice Areas', href: '/practice-areas' },
+    {
+      name: 'Practice Areas',
+      href: '#',
+      dropdown: FIRM_INFO.practiceAreas.map(area => ({
+        name: area.name,
+        href: `/practice-areas/${area.slug}`
+      }))
+    },
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
@@ -22,7 +30,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="text-2xl font-heading font-bold text-primary">
-            Law Firm Name
+            {FIRM_INFO.name}
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,9 +44,11 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button variant="primary" size="sm">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
+            <Button variant="primary" size="sm" asChild>
+              <a href={`tel:${FIRM_INFO.contact.phone}`}>
+                <Phone className="w-4 h-4 mr-2" />
+                {FIRM_INFO.contact.phoneDisplay}
+              </a>
             </Button>
           </div>
 
@@ -65,9 +75,11 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button variant="primary" className="w-full mt-4">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
+            <Button variant="primary" className="w-full mt-4" asChild>
+              <a href={`tel:${FIRM_INFO.contact.phone}`}>
+                <Phone className="w-4 h-4 mr-2" />
+                {FIRM_INFO.contact.phoneDisplay}
+              </a>
             </Button>
           </div>
         )}

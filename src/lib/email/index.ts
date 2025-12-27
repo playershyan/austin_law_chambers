@@ -6,7 +6,7 @@ export const resend = new Resend(process.env.RESEND_API_KEY || 'build-time-place
 
 // Email configuration
 export const EMAIL_CONFIG = {
-  from: 'Leonard Hammond Thoma & Terrill <noreply@lhttlaw.com>',
-  to: process.env.FIRM_EMAIL || 'contact@lhttlaw.com',
-  replyTo: process.env.FIRM_EMAIL || 'contact@lhttlaw.com',
+  from: 'Austin Law Chambers <noreply@alc.lk>',
+  to: process.env.FIRM_EMAIL || 'info@alc.lk',
+  replyTo: process.env.FIRM_EMAIL || 'info@alc.lk',
 }

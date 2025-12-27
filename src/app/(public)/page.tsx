@@ -6,9 +6,9 @@ import { BlogPreview } from '@/components/home/BlogPreview'
 import { CTASection } from '@/components/ui/CTASection'
 
 export const metadata = {
-  title: 'Law Firm Name | Fort Wayne Divorce, Personal Injury & Criminal Defense Attorneys',
+  title: 'Austin Law Chambers | Corporate, Litigation & Property Law in Colombo',
   description:
-    'Trusted Fort Wayne law firm specializing in divorce & family law, personal injury, and criminal defense. Free consultations. Call (260) 555-0100.',
+    'Trusted Colombo law firm specializing in corporate law, commercial litigation, and property law. Expert legal services across Sri Lanka. Call 0112 337 090.',
 }
 
 export default function HomePage() {

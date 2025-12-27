@@ -1,37 +1,14 @@
 import { Section, SectionTitle, Button } from '@/components/ui'
 import { Star, ExternalLink } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export function Testimonials() {
-  const testimonials = [
-    {
-      name: 'Sarah M.',
-      area: 'Divorce & Family Law',
-      rating: 5,
-      quote:
-        'They handled my divorce with professionalism and compassion. The attorney kept me informed every step and fought hard for fair custody arrangements. Highly recommend.',
-    },
-    {
-      name: 'John D.',
-      area: 'Personal Injury',
-      rating: 5,
-      quote:
-        'After my car accident, they dealt with the insurance company so I could focus on recovery. Secured a settlement that covered all my medical bills and more.',
-    },
-    {
-      name: 'Michael R.',
-      area: 'Criminal Defense',
-      rating: 5,
-      quote:
-        'Facing criminal charges was terrifying, but this firm defended me aggressively. They got my charges reduced significantly. Forever grateful.',
-    },
-    {
-      name: 'Lisa K.',
-      area: 'Divorce & Family Law',
-      rating: 5,
-      quote:
-        'Professional, responsive, and truly cared about my case. They made a difficult time much easier. Thank you for protecting my rights.',
-    },
-  ]
+  const testimonials = FIRM_INFO.testimonials.map(t => ({
+    name: t.name,
+    area: t.practiceArea,
+    rating: t.rating,
+    quote: t.text
+  }))
 
   return (
     <Section>
@@ -62,7 +39,7 @@ export function Testimonials() {
       </div>
 
       <div className="text-center">
-        <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        <a href={FIRM_INFO.social.googleReviews} target="_blank" rel="noopener noreferrer">
           <Button variant="outline">
             See More Reviews on Google
             <ExternalLink className="w-4 h-4 ml-2" />

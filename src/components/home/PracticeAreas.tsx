@@ -1,31 +1,22 @@
 import { Section, SectionTitle } from '@/components/ui'
-import { Heart, Shield, Scale } from 'lucide-react'
+import { Building2, Gavel, Home } from 'lucide-react'
 import Link from 'next/link'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export function PracticeAreas() {
-  const areas = [
-    {
-      icon: Heart,
-      title: 'Divorce & Family Law',
-      description:
-        "Compassionate guidance through divorce, custody, support, and asset division. We protect your family's future.",
-      href: '/practice-areas/divorce-family-law',
-    },
-    {
-      icon: Shield,
-      title: 'Personal Injury Law',
-      description:
-        'Maximum compensation for accident victims. We fight insurance companies to recover damages you deserve.',
-      href: '/practice-areas/personal-injury',
-    },
-    {
-      icon: Scale,
-      title: 'Criminal Defense Law',
-      description:
-        'Aggressive protection of your rights. Experienced defense against all criminal charges from misdemeanors to felonies.',
-      href: '/practice-areas/criminal-defense',
-    },
-  ]
+  // Map icon names to actual icon components
+  const iconMap = {
+    Building2,
+    Gavel,
+    Home
+  }
+
+  const areas = FIRM_INFO.practiceAreas.map(area => ({
+    icon: iconMap[area.icon as keyof typeof iconMap],
+    title: area.name,
+    description: area.shortDescription,
+    href: `/practice-areas/${area.slug}`,
+  }))
 
   return (
     <Section>

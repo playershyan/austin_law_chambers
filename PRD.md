@@ -1,23 +1,23 @@
 # Product Requirements Document (PRD)
-## Law Firm Website - Fort Wayne, Indiana
+## Law Firm Website - Austin Law Chambers, Colombo, Sri Lanka
 
 ---
 
 ## 1. Project Overview
 
 ### 1.1 Background
-This project aims to develop a professional law firm website for a small legal practice based in Fort Wayne, Indiana. The firm currently has no web presence and specializes in three core practice areas: Divorce & Family Law, Personal Injury Law, and Criminal Defense Law.
+This project aims to develop a professional law firm website for Austin Law Chambers, a reputable legal firm based in Colombo, Sri Lanka. The firm offers comprehensive legal solutions across three core practice areas: Corporate Law, Commercial Litigation, and Property Law. Known for its experienced team and strategic legal approach, the firm consistently delivers effective outcomes for its diverse clientele.
 
 ### 1.2 Business Goals
 - **Primary Goal:** Generate new client leads through free consultation requests
-- **Secondary Goal:** Establish credibility and authority in the Fort Wayne legal market
-- **Target Audience:** Fort Wayne residents and surrounding areas seeking legal representation
+- **Secondary Goal:** Establish credibility and authority in the Colombo legal market
+- **Target Audience:** Colombo residents, businesses, and surrounding areas seeking legal representation
 
 ### 1.3 Project Scope
 - Full-featured responsive website with 6 main pages
 - Admin dashboard for content management (blog posts only)
 - Simple authentication system (max 3 users)
-- Local SEO optimization for Fort Wayne, Indiana
+- Local SEO optimization for Colombo, Sri Lanka
 - Contact form with email notifications
 - Blog/resources section for content marketing
 
@@ -25,7 +25,7 @@ This project aims to develop a professional law firm website for a small legal p
 - Contact form submissions (lead generation)
 - Phone call conversions from website
 - Average session duration and bounce rate
-- Organic search traffic from Fort Wayne area
+- Organic search traffic from Colombo area
 - Google Business Profile click-throughs
 
 ---
@@ -64,10 +64,10 @@ This project aims to develop a professional law firm website for a small legal p
 #### 2.2.2 SEO
 - **NFR-5:** Auto-generated sitemap.xml
 - **NFR-6:** Proper robots.txt configuration
-- **NFR-7:** LocalBusiness schema markup with Fort Wayne location
+- **NFR-7:** LocalBusiness schema markup with Colombo location
 - **NFR-8:** Dynamic meta tags for all pages
 - **NFR-9:** Open Graph tags for social sharing
-- **NFR-10:** Localized content mentioning Fort Wayne, Indiana
+- **NFR-10:** Localized content mentioning Colombo, Sri Lanka
 
 #### 2.2.3 Security
 - **NFR-11:** Password hashing for user accounts
@@ -105,22 +105,19 @@ This project aims to develop a professional law firm website for a small legal p
 - Placeholders for firm name, contact information, specific value propositions
 
 #### 3.1.2 Practice Area Pages (3 pages)
-**Pages:** Divorce & Family Law | Personal Injury Law | Criminal Defense Law
+**Pages:** Corporate Law | Commercial Litigation | Property Law
 
-**Shared Structure:**
+**Shared Structure (Simplified):**
 - Hero section with practice area title and breadcrumb navigation
-- Introduction paragraph explaining firm's approach
-- Services offered within practice area (7-8 specific services)
-- Process overview (5 steps from consultation to resolution)
-- FAQ section (8 common questions with answers)
-- "Why Choose Us" section (5 differentiators)
-- Case examples/success stories (3 anonymized examples)
-- Practice area-specific testimonials (3 reviews)
+- Brief introduction/overview paragraph (2-3 sentences explaining firm's approach)
+- Services offered within practice area (4-6 specific services in list format)
+- "Why Choose Us" section (3-5 key differentiators)
 - Call-to-action section
 
 **Content:**
-- All content hardcoded based on project_requirement.md structure
-- Fort Wayne, Indiana references in content for local SEO
+- All content hardcoded in React components
+- Colombo, Sri Lanka references in content for local SEO
+- General legal information relevant to Sri Lankan law where applicable
 
 #### 3.1.3 About Us Page
 **Description:** Corporate overview without individual attorney profiles
@@ -135,8 +132,10 @@ This project aims to develop a professional law firm website for a small legal p
 - Call-to-action section
 
 **Content:**
-- Impersonal, corporate-focused messaging
-- Uses firm's Google Business description: "Our firm is comprised of accomplished lawyers, regularly recognized for their integrity and ability to secure results. Over the years, we have carefully constructed a team of powerful litigators that our clients can trust."
+- Corporate-focused messaging emphasizing experience, integrity, and results
+- Professional tone highlighting Austin Law Chambers' experienced team and strategic legal approach
+- Emphasis on client-first philosophy, clear communication, and robust representation
+- References to serving diverse clientele across Colombo and Sri Lanka
 
 #### 3.1.4 Resources/Blog Page
 **Description:** Blog listing page for content marketing and SEO
@@ -155,7 +154,7 @@ This project aims to develop a professional law firm website for a small legal p
 **Functionality:**
 - Fetches published blog posts from database
 - Orders by publication date (newest first)
-- SEO-optimized URLs (e.g., `/blog/understanding-divorce-process`)
+- SEO-optimized URLs (e.g., `/blog/corporate-governance-in-sri-lanka`)
 
 #### 3.1.5 Individual Blog Post Page
 **Description:** Dynamic page for each blog post
@@ -370,12 +369,12 @@ User lands on Homepage
 
 #### 5.1.2 Information Research Flow
 ```
-User searches "Fort Wayne divorce attorney" on Google
+User searches "Corporate lawyer Colombo" on Google
   → Finds website in search results
-  → Lands on Divorce & Family Law page
-  → Reads service offerings and FAQ
+  → Lands on Corporate Law page
+  → Reads service offerings
   → Clicks on Blog to learn more
-  → Reads blog post about divorce process
+  → Reads blog post about corporate governance
   → Builds trust through content
   → Clicks "Schedule Consultation" CTA
   → Fills out contact form
@@ -770,14 +769,14 @@ VALUES ('admin', '$2a$10$...[hashed password]');
    - Blog preview section
    - CTA sections
 5. Create three practice area pages:
-   - Divorce & Family Law
-   - Personal Injury Law
-   - Criminal Defense Law
+   - Corporate Law
+   - Commercial Litigation
+   - Property Law
 6. Create About Us page
 7. Create Contact page (without form initially)
 8. Add Google Maps embed to contact page
 9. Implement responsive design for all pages
-10. Add Fort Wayne, Indiana localized content
+10. Add Colombo, Sri Lanka localized content
 
 **Deliverables:**
 - Fully functional public website with static content
@@ -924,7 +923,7 @@ Source: Website Contact Form
 2. Generate sitemap.xml including all static pages and blog posts
 3. Create robots.txt
 4. Implement LocalBusiness schema markup
-   - Add Fort Wayne address, phone, hours
+   - Add Colombo address, phone, hours
    - Include practice areas in schema
 5. Add Open Graph tags to all pages
 6. Optimize meta descriptions for all static pages
@@ -942,23 +941,25 @@ Source: Website Contact Form
 {
   "@context": "https://schema.org",
   "@type": "LegalService",
-  "name": "[Law Firm Name]",
+  "name": "Austin Law Chambers",
   "image": "[Logo URL]",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "[Street Address]",
-    "addressLocality": "Fort Wayne",
-    "addressRegion": "IN",
-    "postalCode": "[ZIP]",
-    "addressCountry": "US"
+    "streetAddress": "109 - 1/1 Hultsdorf St",
+    "addressLocality": "Colombo",
+    "addressRegion": "Western Province",
+    "postalCode": "01200",
+    "addressCountry": "LK"
   },
-  "telephone": "[Phone Number]",
+  "telephone": "+94112337090",
+  "email": "info@alc.lk",
   "url": "[Website URL]",
+  "openingHours": "Mo-Sa 08:00-17:00",
   "areaServed": {
     "@type": "City",
-    "name": "Fort Wayne"
+    "name": "Colombo"
   },
-  "serviceType": ["Divorce & Family Law", "Personal Injury Law", "Criminal Defense Law"]
+  "serviceType": ["Corporate Law", "Commercial Litigation", "Property Law"]
 }
 ```
 
@@ -1057,11 +1058,11 @@ Source: Website Contact Form
 - Confident and authoritative
 - Clear, jargon-free language
 
-**Fort Wayne Local SEO:**
-- Mention "Fort Wayne" and "Indiana" naturally in content
+**Colombo Local SEO:**
+- Mention "Colombo" and "Sri Lanka" naturally in content
 - Reference local landmarks or areas served (if applicable)
 - Include geographic keywords in blog posts where relevant
-- Optimize for local search terms (e.g., "Fort Wayne divorce attorney")
+- Optimize for local search terms (e.g., "Corporate lawyer Colombo", "Property law Sri Lanka")
 
 ### 8.2 Accessibility Standards
 
@@ -1160,7 +1161,7 @@ The website is considered ready for launch when:
 **Traffic:**
 - Target: 500-1000 monthly visitors
 - Target: 50%+ traffic from organic search
-- Target: Fort Wayne area traffic > 70%
+- Target: Colombo/Sri Lanka area traffic > 70%
 
 **Engagement:**
 - Target: Average session duration > 2 minutes
@@ -1168,7 +1169,7 @@ The website is considered ready for launch when:
 - Target: Pages per session > 2.5
 
 **SEO:**
-- Target: Ranking on page 1 for "[practice area] Fort Wayne" keywords within 3 months
+- Target: Ranking on page 1 for "[practice area] Colombo" keywords within 3 months
 - Target: Google Business Profile clicks to website increase by 30%
 
 **Technical:**
@@ -1225,9 +1226,9 @@ law-firm-website/
 │   │   │   ├── page.tsx (homepage)
 │   │   │   ├── about/
 │   │   │   ├── practice-areas/
-│   │   │   │   ├── divorce-family-law/
-│   │   │   │   ├── personal-injury/
-│   │   │   │   └── criminal-defense/
+│   │   │   │   ├── corporate-law/
+│   │   │   │   ├── commercial-litigation/
+│   │   │   │   └── property-law/
 │   │   │   ├── blog/
 │   │   │   │   ├── page.tsx (listing)
 │   │   │   │   └── [slug]/page.tsx
@@ -1316,13 +1317,17 @@ RESEND_API_KEY="re_..."
 SESSION_SECRET="random_secure_string_here"
 
 # Firm Configuration
-FIRM_EMAIL="contact@lawfirm.com"
+FIRM_EMAIL="info@alc.lk"
+FIRM_PHONE="+94112337090"
+FIRM_ADDRESS="109 - 1/1 Hultsdorf St, Colombo 01200, Sri Lanka"
 
 # Google Analytics
 NEXT_PUBLIC_GA_ID="G-XXXXXXXXXX"
 
 # Google Maps
 NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL="https://www.google.com/maps/embed?pb=..."
+# Google Business Reviews
+NEXT_PUBLIC_GOOGLE_REVIEWS_URL="https://www.google.com/search?sca_esv=a9bd41ccf0963a5b&rlz=1C1CHBF_en-GBLK1178LK1178&sxsrf=AE3TifN84zn27RPGIaOXjJZi4ah500Z79Q:1766863407578&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E_hGtJd4zTZ6SRdWYnV8aIG3fsKEJaxyGaI2psh0GfwdRVI1pDpl2TIe4vsp51JixhsGsSG8M8e5ddTxiaUXyf9j99slOVEXbT_M2viqUxfk6PukoA%3D%3D&q=Austin+Law+Chambers+Reviews"
 ```
 
 ---
@@ -1356,9 +1361,9 @@ NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL="https://www.google.com/maps/embed?pb=..."
 ---
 
 ## Document Version
-- **Version:** 1.0
-- **Last Updated:** December 21, 2025
-- **Status:** Final - Ready for Development
+- **Version:** 2.0 - Austin Law Chambers
+- **Last Updated:** December 28, 2025
+- **Status:** Updated for Austin Law Chambers - Demo Version
 
 ---
 

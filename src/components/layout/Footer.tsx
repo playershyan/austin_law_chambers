@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Facebook, Twitter, Linkedin } from 'lucide-react'
+import { Facebook, Twitter, Linkedin, Star } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,9 +11,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-heading font-bold mb-4">Law Firm Name</h3>
+            <h3 className="text-xl font-heading font-bold mb-4">{FIRM_INFO.name}</h3>
             <p className="text-sm text-gray-300">
-              Your trusted legal advocate for family, personal injury, and criminal defense.
+              {FIRM_INFO.description.short}
             </p>
           </div>
 
@@ -42,21 +43,13 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Practice Areas</h4>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/practice-areas/divorce-family-law" className="hover:text-secondary">
-                  Divorce & Family Law
-                </Link>
-              </li>
-              <li>
-                <Link href="/practice-areas/personal-injury" className="hover:text-secondary">
-                  Personal Injury
-                </Link>
-              </li>
-              <li>
-                <Link href="/practice-areas/criminal-defense" className="hover:text-secondary">
-                  Criminal Defense
-                </Link>
-              </li>
+              {FIRM_INFO.practiceAreas.map((area) => (
+                <li key={area.slug}>
+                  <Link href={`/practice-areas/${area.slug}`} className="hover:text-secondary">
+                    {area.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -64,10 +57,29 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-sm text-gray-300">
-              <li>123 Main Street</li>
-              <li>Fort Wayne, IN 46802</li>
-              <li>Phone: (260) 555-0100</li>
-              <li>Email: contact@lawfirm.com</li>
+              <li>{FIRM_INFO.address.street}</li>
+              <li>{FIRM_INFO.address.city} {FIRM_INFO.address.postalCode}, {FIRM_INFO.address.country}</li>
+              <li>
+                <a href={`tel:${FIRM_INFO.contact.phone}`} className="hover:text-secondary">
+                  Phone: {FIRM_INFO.contact.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${FIRM_INFO.contact.email}`} className="hover:text-secondary">
+                  Email: {FIRM_INFO.contact.email}
+                </a>
+              </li>
+              <li className="pt-2">
+                <a
+                  href={FIRM_INFO.social.googleReviews}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-secondary inline-flex items-center gap-1"
+                >
+                  <Star className="w-4 h-4 fill-current" />
+                  See our Google Reviews
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -77,7 +89,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
               <p className="text-sm text-gray-300">
-                © {currentYear} Leonard, Hammond, Thoma & Terrill. All rights reserved.
+                © {currentYear} {FIRM_INFO.name}. All rights reserved.
               </p>
               <Link
                 href="/privacy-policy"
