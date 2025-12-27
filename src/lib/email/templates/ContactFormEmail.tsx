@@ -78,7 +78,7 @@ export function ContactFormEmail({
           <Hr style={hr} />
 
           <Text style={footer}>
-            This email was sent from the contact form on lhttlaw.com
+            This email was sent from the contact form on alc.lk
           </Text>
         </Container>
       </Body>

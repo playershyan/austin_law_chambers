@@ -3,7 +3,7 @@ import { db } from '@/lib/db/client'
 import { blogPosts } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lhttlaw.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://alc.lk'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages
@@ -21,19 +21,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/practice-areas/divorce-family-law`,
+      url: `${BASE_URL}/practice-areas/corporate-law`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/practice-areas/personal-injury`,
+      url: `${BASE_URL}/practice-areas/commercial-litigation`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/practice-areas/criminal-defense`,
+      url: `${BASE_URL}/practice-areas/property-law`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,

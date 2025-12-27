@@ -3,7 +3,7 @@
 import { getStructuredData, FIRM_INFO } from '@/lib/firm-constants'
 
 export function LocalBusinessSchema() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lhttlaw.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alc.lk'
 
   const schema = {
     ...getStructuredData(),
