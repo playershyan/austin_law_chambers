@@ -1,64 +1,30 @@
 import Link from 'next/link'
 import { Container, Section, SectionTitle } from '@/components/ui'
-import { Scale, Users, ShieldCheck, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
+import { Building2, Gavel, Home } from 'lucide-react'
 
 export const metadata = {
-  title: 'Practice Areas | Leonard, Hammond, Thoma & Terrill',
+  title: 'Practice Areas | Austin Law Chambers',
   description:
-    'Experienced Fort Wayne attorneys specializing in Family Law, Personal Injury, and Criminal Defense. Expert legal representation for your case.',
+    'Expert legal services in Colombo, Sri Lanka. Corporate Law, Commercial Litigation, and Property Law. Trusted attorneys serving businesses and individuals.',
 }
 
 export default function PracticeAreasPage() {
-  const practiceAreas = [
-    {
-      icon: Users,
-      title: 'Divorce & Family Law',
-      slug: 'divorce-family-law',
-      description:
-        'Compassionate representation for divorce, child custody, support, adoption, and all family law matters.',
-      services: [
-        'Divorce & Legal Separation',
-        'Child Custody & Visitation',
-        'Child & Spousal Support',
-        'Property & Asset Division',
-        'Prenuptial Agreements',
-        'Adoption',
-      ],
-      color: 'bg-primary',
-    },
-    {
-      icon: Scale,
-      title: 'Personal Injury',
-      slug: 'personal-injury',
-      description:
-        'Fighting for maximum compensation for accident victims. No fee unless we win your case.',
-      services: [
-        'Car & Truck Accidents',
-        'Slip & Fall Injuries',
-        'Medical Malpractice',
-        'Workplace Injuries',
-        'Wrongful Death',
-        'Product Liability',
-      ],
-      color: 'bg-primary',
-    },
-    {
-      icon: ShieldCheck,
-      title: 'Criminal Defense',
-      slug: 'criminal-defense',
-      description:
-        'Aggressive defense protecting your rights and freedom in all criminal matters.',
-      services: [
-        'DUI/OWI Defense',
-        'Drug Crimes',
-        'Theft & Property Crimes',
-        'Assault & Battery',
-        'White Collar Crimes',
-        'Juvenile Defense',
-      ],
-      color: 'bg-primary',
-    },
-  ]
+  // Map icon names to actual icon components
+  const iconMap = {
+    Building2,
+    Gavel,
+    Home,
+  }
+
+  const practiceAreas = FIRM_INFO.practiceAreas.map((area) => ({
+    icon: iconMap[area.icon as keyof typeof iconMap],
+    title: area.name,
+    slug: area.slug,
+    description: area.description,
+    services: area.services,
+  }))
 
   return (
     <>
@@ -68,8 +34,8 @@ export default function PracticeAreasPage() {
           <nav className="text-sm mb-4 text-white/70">Home &gt; Practice Areas</nav>
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">Our Practice Areas</h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Experienced legal representation across multiple practice areas in Fort Wayne and
-            throughout Indiana
+            Comprehensive legal services for businesses and individuals in Colombo and throughout
+            Sri Lanka
           </p>
         </Container>
       </section>
@@ -89,9 +55,7 @@ export default function PracticeAreasPage() {
                 className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow p-8 border border-gray-100"
               >
                 {/* Icon */}
-                <div
-                  className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-6 border-2 border-primary"
-                >
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mb-6 border-2 border-primary">
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
 
@@ -107,12 +71,17 @@ export default function PracticeAreasPage() {
                 <div className="mb-6">
                   <h3 className="font-semibold text-primary mb-3">Services Include:</h3>
                   <ul className="space-y-2">
-                    {area.services.map((service, idx) => (
+                    {area.services.slice(0, 4).map((service, idx) => (
                       <li key={idx} className="flex items-start text-sm text-text-light">
                         <span className="text-secondary mr-2">•</span>
                         {service}
                       </li>
                     ))}
+                    {area.services.length > 4 && (
+                      <li className="text-sm text-text-light italic">
+                        And {area.services.length - 4} more...
+                      </li>
+                    )}
                   </ul>
                 </div>
 
@@ -135,66 +104,30 @@ export default function PracticeAreasPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary mb-6">
-              Why Choose Leonard, Hammond, Thoma & Terrill?
+              Why Choose Austin Law Chambers?
             </h2>
             <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-white font-bold">✓</span>
+              {FIRM_INFO.whyChooseUs.slice(0, 4).map((reason, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white font-bold">✓</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-primary mb-1">{reason.title}</h3>
+                    <p className="text-text-light">{reason.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-primary mb-1">Decades of Experience</h3>
-                  <p className="text-text-light">
-                    Our attorneys bring extensive experience and proven results
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-white font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-primary mb-1">Personalized Attention</h3>
-                  <p className="text-text-light">
-                    We take time to understand your unique situation and goals
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-white font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-primary mb-1">Local Expertise</h3>
-                  <p className="text-text-light">
-                    Deep knowledge of Fort Wayne courts and legal community
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                  <span className="text-white font-bold">✓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-primary mb-1">Free Consultations</h3>
-                  <p className="text-text-light">
-                    Meet with us at no cost to discuss your case and options
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <h3 className="text-2xl font-heading font-bold text-primary mb-4">
-              Schedule Your Free Consultation
+              Schedule Your Consultation
             </h3>
             <p className="text-text-light mb-6">
-              Ready to discuss your legal matter? Contact us today for a no-obligation consultation
-              with one of our experienced attorneys.
+              Ready to discuss your legal matter? Contact us today to speak with one of our
+              experienced attorneys.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -203,7 +136,12 @@ export default function PracticeAreasPage() {
                 </div>
                 <div>
                   <p className="text-sm text-text-light">Call Us</p>
-                  <p className="font-bold text-primary">(260) 555-0100</p>
+                  <a
+                    href={`tel:${FIRM_INFO.contact.phone}`}
+                    className="font-bold text-primary hover:underline"
+                  >
+                    {FIRM_INFO.contact.phoneDisplay}
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -212,7 +150,12 @@ export default function PracticeAreasPage() {
                 </div>
                 <div>
                   <p className="text-sm text-text-light">Email Us</p>
-                  <p className="font-bold text-primary">contact@lhttlaw.com</p>
+                  <a
+                    href={`mailto:${FIRM_INFO.contact.email}`}
+                    className="font-bold text-primary hover:underline"
+                  >
+                    {FIRM_INFO.contact.email}
+                  </a>
                 </div>
               </div>
               <Link

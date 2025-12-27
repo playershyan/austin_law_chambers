@@ -1,9 +1,9 @@
 import { Container, Section } from '@/components/ui'
 
 export const metadata = {
-  title: 'Privacy Policy | Leonard, Hammond, Thoma & Terrill',
+  title: 'Privacy Policy | Austin Law Chambers',
   description:
-    'Privacy policy for Leonard, Hammond, Thoma & Terrill law firm. Learn how we protect your information and handle data submitted through our website.',
+    'Privacy policy for Austin Law Chambers law firm. Learn how we protect your information and handle data submitted through our website.',
 }
 
 export default function PrivacyPolicyPage() {
@@ -38,10 +38,10 @@ export default function PrivacyPolicyPage() {
                 1. Introduction
               </h2>
               <p className="text-text leading-relaxed mb-4">
-                Leonard, Hammond, Thoma & Terrill ("we," "us," "our," or "the Firm") is
+                Austin Law Chambers ("we," "us," "our," or "the Firm") is
                 committed to protecting the privacy of visitors to our website located at{' '}
-                <a href="https://lhttlaw.com" className="text-primary hover:underline">
-                  lhttlaw.com
+                <a href="https://alc.lk" className="text-primary hover:underline">
+                  alc.lk
                 </a>{' '}
                 (the "Website"). This Privacy Policy describes our practices concerning the
                 collection, use, and disclosure of information submitted through our Website,
@@ -183,8 +183,7 @@ export default function PrivacyPolicyPage() {
                 <p className="text-text leading-relaxed font-semibold mb-2">IMPORTANT NOTICE:</p>
                 <p className="text-text leading-relaxed">
                   Submission of information through this Website, including the contact form, does
-                  NOT create an attorney-client relationship between you and Leonard, Hammond, Thoma
-                  & Terrill. An attorney-client relationship is established only through a written
+                  NOT create an attorney-client relationship between you and Austin Law Chambers. An attorney-client relationship is established only through a written
                   engagement agreement signed by both you and the Firm.
                 </p>
               </div>
@@ -273,20 +272,20 @@ export default function PrivacyPolicyPage() {
               </p>
               <div className="bg-background-gray p-6 rounded-lg border border-gray-200">
                 <p className="text-text mb-2">
-                  <strong>Leonard, Hammond, Thoma & Terrill</strong>
+                  <strong>Austin Law Chambers</strong>
                 </p>
-                <p className="text-text mb-2">123 Main Street</p>
-                <p className="text-text mb-2">Fort Wayne, IN 46802</p>
+                <p className="text-text mb-2">109 - 1/1 Hultsdorf St</p>
+                <p className="text-text mb-2">Colombo 01200, Sri Lanka</p>
                 <p className="text-text mb-2">
                   <strong>Phone:</strong>{' '}
-                  <a href="tel:+12605550100" className="text-primary hover:underline">
-                    (260) 555-0100
+                  <a href="tel:+94112337090" className="text-primary hover:underline">
+                    0112 337 090
                   </a>
                 </p>
                 <p className="text-text">
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:contact@lhttlaw.com" className="text-primary hover:underline">
-                    contact@lhttlaw.com
+                  <a href="mailto:info@alc.lk" className="text-primary hover:underline">
+                    info@alc.lk
                   </a>
                 </p>
               </div>

@@ -65,7 +65,7 @@ export default async function BlogPage({
               Legal Blog & Insights
             </h1>
             <p className="text-xl text-white/90 max-w-2xl">
-              Expert legal insights, news, and updates from Leonard, Hammond, Thoma & Terrill
+              Expert legal insights, news, and updates from Austin Law Chambers
             </p>
           </Container>
         </div>
