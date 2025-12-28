@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Montserrat, Cinzel } from 'next/font/google'
+import { Inter, Montserrat, UnifrakturMaguntia } from 'next/font/google'
 import './globals.css'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics'
@@ -15,10 +15,10 @@ const montserrat = Montserrat({
   subsets: ['latin'],
 })
 
-const cinzel = Cinzel({
-  variable: '--font-cinzel',
+const unifrakturMaguntia = UnifrakturMaguntia({
+  variable: '--font-gothic',
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: '400',
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alc.lk'
@@ -95,7 +95,7 @@ export default function RootLayout({
       <head>
         <LocalBusinessSchema />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} ${cinzel.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${montserrat.variable} ${unifrakturMaguntia.variable} font-sans antialiased`}>
         {googleMapsApiKey && <GoogleMapsScript apiKey={googleMapsApiKey} />}
         <GoogleAnalytics />
         {children}
