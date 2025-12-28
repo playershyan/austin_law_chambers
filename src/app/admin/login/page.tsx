@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Button, Input, Label } from '@/components/ui'
 import { Lock } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export default function AdminLoginPage() {
   const router = useRouter()
@@ -49,6 +51,23 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-background-gray flex items-center justify-center px-4">
       <div className="max-w-md w-full">
         <div className="bg-white rounded-lg shadow-lg p-8">
+          {/* Firm Branding */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Image
+              src="/logo/Austin_Law_Chambers_logo-removebg-preview.png"
+              alt="Austin Law Chambers Logo"
+              width={60}
+              height={60}
+              className="h-12 w-auto"
+              style={{
+                filter: 'brightness(0) saturate(100%) invert(68%) sepia(67%) saturate(410%) hue-rotate(4deg) brightness(93%) contrast(88%)'
+              }}
+            />
+            <span className="text-xl font-bold text-secondary" style={{ fontFamily: '"Engravers Old English BT", "Old English Text MT", "UnifrakturMaguntia", serif' }}>
+              {FIRM_INFO.name}
+            </span>
+          </div>
+
           {/* Header */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">

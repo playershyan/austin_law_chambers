@@ -1,9 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { LayoutDashboard, FileText, Users, LogOut, User } from 'lucide-react'
+import { FIRM_INFO } from '@/lib/firm-constants'
 
 export function Sidebar() {
   const pathname = usePathname()
@@ -25,7 +27,23 @@ export function Sidebar() {
   return (
     <aside className="w-64 bg-primary text-white min-h-screen flex flex-col shadow-xl sticky top-0">
       <div className="p-6 pb-5 border-b border-white/10">
-        <h2 className="text-2xl font-heading font-bold">Admin Panel</h2>
+        {/* Firm Branding */}
+        <Link href="/" className="flex flex-col items-center gap-2">
+          <Image
+            src="/logo/Austin_Law_Chambers_logo-removebg-preview.png"
+            alt="Austin Law Chambers Logo"
+            width={60}
+            height={60}
+            className="h-14 w-auto"
+            style={{
+              filter: 'brightness(0) saturate(100%) invert(68%) sepia(67%) saturate(410%) hue-rotate(4deg) brightness(93%) contrast(88%)'
+            }}
+          />
+          <span className="text-lg font-bold text-secondary text-center leading-tight" style={{ fontFamily: '"Engravers Old English BT", "Old English Text MT", "UnifrakturMaguntia", serif' }}>
+            {FIRM_INFO.name}
+          </span>
+        </Link>
+        <p className="text-white/60 text-xs text-center mt-2">Admin Panel</p>
       </div>
 
       <nav className="flex-1 px-4 py-5 space-y-1.5 overflow-y-auto">
