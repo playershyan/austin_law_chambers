@@ -213,7 +213,7 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
           type="button"
           onClick={addImage}
           className="p-2 rounded hover:bg-gray-200"
-          title="Add Image"
+          title="Add Image (Max 4.5MB)"
           disabled={uploadStatus.state === 'uploading'}
         >
           {uploadStatus.state === 'uploading' ? (
@@ -241,6 +241,9 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
         >
           <Redo className="w-4 h-4" />
         </button>
+        <div className="ml-auto flex items-center gap-2 px-2">
+          <span className="text-xs text-gray-500">Image uploads: Max 4.5MB</span>
+        </div>
       </div>
 
       {/* Upload Status Indicator */}
