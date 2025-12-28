@@ -57,6 +57,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      url: `${BASE_URL}/credits`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,

@@ -113,10 +113,17 @@ export function Footer() {
             </div>
           </div>
 
-          <p className="text-xs text-gray-400 mt-4">
-            Disclaimer: The information on this website is for general informational purposes only
-            and does not constitute legal advice.
-          </p>
+          <div className="text-xs text-gray-400 mt-4 space-y-1">
+            <p>
+              Disclaimer: The information on this website is for general informational purposes only
+              and does not constitute legal advice.
+            </p>
+            <p>
+              <Link href="/credits" className="hover:text-secondary underline">
+                Credits & Attributions
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

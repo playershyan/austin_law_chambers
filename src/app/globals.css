@@ -1,14 +1,23 @@
 @import 'tailwindcss';
 
+/* Engravers Old English BT Font */
+@font-face {
+  font-family: 'Engravers Old English BT';
+  src: url('/fonts/EngraversOldEnglishBT-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Custom Colors */
-  --color-primary: #1a3a52;
-  --color-primary-dark: #0f2433;
-  --color-primary-light: #2b5570;
+  --color-primary: #0A192F;
+  --color-primary-dark: #020C1B;
+  --color-primary-light: #1B3A52;
 
-  --color-secondary: #c9a961;
-  --color-secondary-dark: #a88b4d;
-  --color-secondary-light: #d9bf85;
+  --color-secondary: #D4AF37;
+  --color-secondary-dark: #B8941E;
+  --color-secondary-light: #F0D77E;
 
   --color-accent: #2b8a8a;
   --color-accent-dark: #1f6666;
