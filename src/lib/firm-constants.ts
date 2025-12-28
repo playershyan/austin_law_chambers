@@ -16,6 +16,10 @@ export const FIRM_INFO = {
     country: "Sri Lanka",
     countryCode: "LK",
     full: "109 - 1/1 Hultsdorf St, Colombo 01200, Sri Lanka",
+    coordinates: {
+      lat: 6.938261740903269,
+      lng: 79.86083464731296,
+    },
   },
 
   contact: {

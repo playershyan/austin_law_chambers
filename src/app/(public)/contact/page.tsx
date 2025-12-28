@@ -88,7 +88,7 @@ export default function ContactPage() {
             <div className="rounded-lg overflow-hidden">
               {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? (
                 <LazyGoogleMap
-                  center={{ lat: 6.9271, lng: 80.7789 }}
+                  center={FIRM_INFO.address.coordinates}
                   zoom={16}
                   mapId={process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID}
                   height="400px"
@@ -110,7 +110,7 @@ export default function ContactPage() {
             {/* Get Directions Link */}
             <div className="mt-4">
               <a
-                href="https://www.google.com/maps?q=Austin+Law+Chambers,+Colombo,+Sri+Lanka"
+                href={`https://www.google.com/maps?q=${FIRM_INFO.address.coordinates.lat},${FIRM_INFO.address.coordinates.lng}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-semibold transition-colors"
