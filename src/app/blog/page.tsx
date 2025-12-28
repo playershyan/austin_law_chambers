@@ -49,9 +49,10 @@ async function getBlogPosts(page: number = 1) {
 export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { page?: string }
+  searchParams: Promise<{ page?: string }>
 }) {
-  const currentPage = Number(searchParams.page) || 1
+  const params = await searchParams
+  const currentPage = Number(params.page) || 1
   const { posts, totalPages, totalPosts } = await getBlogPosts(currentPage)
 
   return (

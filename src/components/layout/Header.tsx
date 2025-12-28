@@ -13,7 +13,7 @@ export function Header() {
     { name: 'Home', href: '/' },
     {
       name: 'Practice Areas',
-      href: '#',
+      href: '/practice-areas',
       dropdown: FIRM_INFO.practiceAreas.map(area => ({
         name: area.name,
         href: `/practice-areas/${area.slug}`
