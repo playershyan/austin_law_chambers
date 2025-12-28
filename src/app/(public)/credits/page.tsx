@@ -165,7 +165,7 @@ export default function CreditsPage() {
                     href="https://holtzmanlabs.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-text font-semibold hover:text-primary hover:underline"
+                    className="text-primary font-semibold underline hover:text-primary-light transition-colors"
                   >
                     Holtzman Labs Software
                   </a>

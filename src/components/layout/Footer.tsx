@@ -129,7 +129,7 @@ export function Footer() {
                 href="https://holtzmanlabs.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-secondary hover:underline"
+                className="text-secondary underline hover:text-secondary-light transition-colors"
               >
                 Holtzman Labs Software
               </a>
