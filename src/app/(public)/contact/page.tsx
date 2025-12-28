@@ -138,7 +138,7 @@ export default function ContactPage() {
             </p>
             <a
               href={`tel:${FIRM_INFO.contact.phone.replace(/\D/g, '')}`}
-              className="inline-block bg-secondary text-primary px-8 py-4 rounded-md font-semibold text-lg hover:bg-secondary-dark transition-colors"
+              className="inline-block bg-secondary text-white px-8 py-4 rounded-md font-semibold text-lg hover:bg-secondary-dark transition-colors"
             >
               Call Now: {FIRM_INFO.contact.phoneDisplay}
             </a>
