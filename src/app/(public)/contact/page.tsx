@@ -1,7 +1,6 @@
 import { Section, SectionTitle } from '@/components/ui'
 import { MapPin, Phone, Mail, Clock } from 'lucide-react'
 import { ContactForm } from '@/components/forms/ContactForm'
-import { LazyGoogleMap } from '@/components/maps'
 import { FIRM_INFO } from '@/lib/firm-constants'
 
 export const metadata = {
@@ -86,25 +85,16 @@ export default function ContactPage() {
           <div>
             <h2 className="text-3xl font-heading font-bold text-primary mb-6">Visit Our Office</h2>
             <div className="rounded-lg overflow-hidden">
-              {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ? (
-                <LazyGoogleMap
-                  center={FIRM_INFO.address.coordinates}
-                  zoom={16}
-                  mapId={process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID}
-                  height="400px"
-                  markerTitle={`${FIRM_INFO.name} - Law Office`}
-                />
-              ) : (
-                <div className="w-full h-[400px] flex items-center justify-center text-text-light">
-                  <div className="text-center">
-                    <MapPin className="w-16 h-16 mx-auto mb-4 text-primary" />
-                    <p className="font-semibold">Google Maps will be displayed here</p>
-                    <p className="text-sm mt-2">
-                      Set NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in environment variables
-                    </p>
-                  </div>
-                </div>
-              )}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2191.4700543051977!2d79.8597973366104!3d6.937094794537481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591cfec0698d%3A0x1f82aa64436007d6!2sAustin%20Law%20Chambers!5e0!3m2!1sen!2slk!4v1766925362567!5m2!1sen!2slk"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Austin Law Chambers Location"
+              />
             </div>
 
             {/* Get Directions Link */}
