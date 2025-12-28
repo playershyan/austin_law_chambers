@@ -222,7 +222,7 @@ Austin Law Chambers offers comprehensive property law services for individuals a
 
 **Meta Title:** Corporate Governance in Sri Lanka | Austin Law Chambers
 
-**Meta Description:** Learn about corporate governance requirements under Sri Lankan law. Essential guide for directors and shareholders on compliance and best practices.
+**Meta Description:** Understanding Corporate Governance in Sri Lanka: A Guide for Business Owners
 
 **Author:** Austin Law Chambers
 

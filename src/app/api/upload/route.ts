@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { uploadFile } from '@/lib/blob'
+import { writeFile, mkdir } from 'fs/promises'
+import path from 'path'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
@@ -33,12 +35,31 @@ export async function POST(request: NextRequest) {
     const timestamp = Date.now()
     const randomString = Math.random().toString(36).substring(2, 15)
     const extension = file.name.split('.').pop()
-    const filename = `blog-images/${timestamp}-${randomString}.${extension}`
+    const filename = `${timestamp}-${randomString}.${extension}`
 
-    // Upload to Vercel Blob
-    const url = await uploadFile(file, filename)
+    // Check if Vercel Blob token is configured
+    if (process.env.BLOB_READ_WRITE_TOKEN) {
+      // Use Vercel Blob for production
+      const blobFilename = `blog-images/${filename}`
+      const url = await uploadFile(file, blobFilename)
+      return NextResponse.json({ url }, { status: 200 })
+    } else {
+      // Use local file storage for development
+      const bytes = await file.arrayBuffer()
+      const buffer = Buffer.from(bytes)
 
-    return NextResponse.json({ url }, { status: 200 })
+      // Create uploads directory if it doesn't exist
+      const uploadDir = path.join(process.cwd(), 'public', 'uploads', 'blog-images')
+      await mkdir(uploadDir, { recursive: true })
+
+      // Save file locally
+      const filepath = path.join(uploadDir, filename)
+      await writeFile(filepath, buffer)
+
+      // Return public URL
+      const url = `/uploads/blog-images/${filename}`
+      return NextResponse.json({ url }, { status: 200 })
+    }
   } catch (error) {
     console.error('Error uploading image:', error)
     return NextResponse.json({ error: 'Failed to upload image' }, { status: 500 })

@@ -43,3 +43,6 @@ next-env.d.ts
 
 # claude/IDE settings
 .claude/settings.local.json
+
+# user uploads
+/public/uploads/
