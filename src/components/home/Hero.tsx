@@ -14,10 +14,10 @@ export function Hero() {
           alt="Lady Justice"
           fill
           priority
-          className="object-cover object-center opacity-30"
+          className="object-cover object-center opacity-60"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/70 via-primary/60 to-primary/50" />
       </div>
 
       {/* Content */}
