@@ -29,7 +29,7 @@ export function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-heading font-bold text-primary">
+          <Link href="/" className="text-2xl font-bold text-[#8B7500]" style={{ fontFamily: 'var(--font-gothic)' }}>
             {FIRM_INFO.name}
           </Link>
 
