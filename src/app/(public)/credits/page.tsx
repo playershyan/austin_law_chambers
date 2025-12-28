@@ -160,7 +160,15 @@ export default function CreditsPage() {
             <section className="mb-8">
               <div className="text-center pt-6 border-t border-gray-200">
                 <p className="text-text-light text-sm">
-                  Designed and developed by <strong className="text-text">Holtzman Labs Software</strong>
+                  Designed and developed by{' '}
+                  <a
+                    href="https://holtzmanlabs.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text font-semibold hover:text-primary hover:underline"
+                  >
+                    Holtzman Labs Software
+                  </a>
                 </p>
               </div>
             </section>

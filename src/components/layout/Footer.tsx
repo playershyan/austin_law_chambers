@@ -124,7 +124,15 @@ export function Footer() {
               </Link>
             </p>
             <p className="text-gray-500">
-              Designed and developed by Holtzman Labs Software
+              Designed and developed by{' '}
+              <a
+                href="https://holtzmanlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-secondary hover:underline"
+              >
+                Holtzman Labs Software
+              </a>
             </p>
           </div>
         </div>
