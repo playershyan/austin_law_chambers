@@ -8,9 +8,9 @@ import { put, del, list } from '@vercel/blob'
  */
 export async function uploadFile(file: File, filename: string): Promise<string> {
   try {
+    // Vercel SDK automatically reads BLOB_READ_WRITE_TOKEN from environment
     const blob = await put(filename, file, {
       access: 'public',
-      token: process.env.BLOB_READ_WRITE_TOKEN,
     })
 
     return blob.url
@@ -26,9 +26,8 @@ export async function uploadFile(file: File, filename: string): Promise<string> 
  */
 export async function deleteFile(url: string): Promise<void> {
   try {
-    await del(url, {
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    })
+    // Vercel SDK automatically reads BLOB_READ_WRITE_TOKEN from environment
+    await del(url)
   } catch (error) {
     console.error('Error deleting file from blob storage:', error)
     throw new Error('Failed to delete file')
@@ -40,9 +39,8 @@ export async function deleteFile(url: string): Promise<void> {
  */
 export async function listFiles() {
   try {
-    const { blobs } = await list({
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-    })
+    // Vercel SDK automatically reads BLOB_READ_WRITE_TOKEN from environment
+    const { blobs } = await list()
 
     return blobs
   } catch (error) {

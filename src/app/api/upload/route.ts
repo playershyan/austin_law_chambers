@@ -3,7 +3,7 @@ import { uploadFile } from '@/lib/blob'
 import { writeFile, mkdir } from 'fs/promises'
 import path from 'path'
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
+const MAX_FILE_SIZE = 4.5 * 1024 * 1024 // 4.5MB (Next.js server upload limit)
 const ALLOWED_FILE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 
 export async function POST(request: NextRequest) {
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     // Validate file size
     if (file.size > MAX_FILE_SIZE) {
       return NextResponse.json(
-        { error: 'File too large. Maximum size is 5MB.' },
+        { error: 'File too large. Maximum size is 4.5MB.' },
         { status: 400 }
       )
     }
