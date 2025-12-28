@@ -17,8 +17,11 @@ import {
   Heading3,
   Link as LinkIcon,
   ImageIcon,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
 } from 'lucide-react'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 
 interface RichTextEditorProps {
   content: string
@@ -27,6 +30,11 @@ interface RichTextEditorProps {
 }
 
 export function RichTextEditor({ content, onChange, placeholder }: RichTextEditorProps) {
+  const [uploadStatus, setUploadStatus] = useState<{
+    state: 'idle' | 'uploading' | 'success' | 'error'
+    message?: string
+  }>({ state: 'idle' })
+
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -67,6 +75,8 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
       if (!file) return
 
       try {
+        setUploadStatus({ state: 'uploading', message: 'Uploading image...' })
+
         const formData = new FormData()
         formData.append('file', file)
 
@@ -77,14 +87,18 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
 
         if (!response.ok) {
           const error = await response.json()
-          alert(error.error || 'Failed to upload image')
+          setUploadStatus({ state: 'error', message: error.error || 'Failed to upload image' })
+          setTimeout(() => setUploadStatus({ state: 'idle' }), 3000)
           return
         }
 
         const data = await response.json()
         editor?.chain().focus().setImage({ src: data.url }).run()
+        setUploadStatus({ state: 'success', message: 'Image uploaded successfully!' })
+        setTimeout(() => setUploadStatus({ state: 'idle' }), 2000)
       } catch (error) {
-        alert('Failed to upload image')
+        setUploadStatus({ state: 'error', message: 'Failed to upload image' })
+        setTimeout(() => setUploadStatus({ state: 'idle' }), 3000)
       }
     }
     input.click()
@@ -200,8 +214,13 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
           onClick={addImage}
           className="p-2 rounded hover:bg-gray-200"
           title="Add Image"
+          disabled={uploadStatus.state === 'uploading'}
         >
-          <ImageIcon className="w-4 h-4" />
+          {uploadStatus.state === 'uploading' ? (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          ) : (
+            <ImageIcon className="w-4 h-4" />
+          )}
         </button>
         <div className="w-px bg-gray-300 mx-1" />
         <button
@@ -223,6 +242,30 @@ export function RichTextEditor({ content, onChange, placeholder }: RichTextEdito
           <Redo className="w-4 h-4" />
         </button>
       </div>
+
+      {/* Upload Status Indicator */}
+      {uploadStatus.state !== 'idle' && (
+        <div
+          className={`px-4 py-2 flex items-center gap-2 text-sm border-b ${
+            uploadStatus.state === 'uploading'
+              ? 'bg-blue-50 border-blue-200 text-blue-800'
+              : uploadStatus.state === 'success'
+              ? 'bg-green-50 border-green-200 text-green-800'
+              : 'bg-red-50 border-red-200 text-red-800'
+          }`}
+        >
+          {uploadStatus.state === 'uploading' && (
+            <Loader2 className="w-4 h-4 animate-spin" />
+          )}
+          {uploadStatus.state === 'success' && (
+            <CheckCircle2 className="w-4 h-4" />
+          )}
+          {uploadStatus.state === 'error' && (
+            <AlertCircle className="w-4 h-4" />
+          )}
+          <span>{uploadStatus.message}</span>
+        </div>
+      )}
 
       {/* Editor Content */}
       <EditorContent editor={editor} />
