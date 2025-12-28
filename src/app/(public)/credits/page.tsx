@@ -155,6 +155,15 @@ export default function CreditsPage() {
                 </p>
               </div>
             </section>
+
+            {/* Development Credit */}
+            <section className="mb-8">
+              <div className="text-center pt-6 border-t border-gray-200">
+                <p className="text-text-light text-sm">
+                  Designed and developed by <strong className="text-text">Holtzman Labs Software</strong>
+                </p>
+              </div>
+            </section>
           </div>
         </div>
       </Section>

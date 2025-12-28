@@ -123,6 +123,9 @@ export function Footer() {
                 Credits & Attributions
               </Link>
             </p>
+            <p className="text-gray-500">
+              Designed and developed by Holtzman Labs Software
+            </p>
           </div>
         </div>
       </div>
